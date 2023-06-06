@@ -6,7 +6,7 @@ namespace Practice.Controllers;
 
 public class HomeController : Controller
 {
-  static HogwartsStudent student;
+  static HogwartsStudent NewStudent;
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -20,9 +20,9 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost("register")]
-public IActionResult Register(HogwartsStudent newStudent) // updated
+public IActionResult Register(HogwartsStudent student) // updated
 {    
- newStudent = student;
+ NewStudent = student;
 
 
  return RedirectToAction("Results");
@@ -31,7 +31,7 @@ public IActionResult Register(HogwartsStudent newStudent) // updated
 [HttpGet("results")]
 
     public IActionResult Results(){
-        return View(student);
+        return View(NewStudent);
     }
 
 
