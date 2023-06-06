@@ -6,25 +6,34 @@ namespace Practice.Controllers;
 
 public class HomeController : Controller
 {
+  static HogwartsStudent student;
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
-
+[HttpGet("")]
     public IActionResult Index()
     {
     
         return View();
     }
     [HttpPost("register")]
-public IActionResult RegisterWizard(HogwartsStudent student) // updated
+public IActionResult Register(HogwartsStudent newStudent) // updated
 {    
- Console.WriteLine(student.Name);
- Console.WriteLine(student.House);
- Console.WriteLine(student.CurrentYear);
+ newStudent = student;
+
+
+ return RedirectToAction("Results");
 } 
+
+[HttpGet("results")]
+
+    public IActionResult Results(){
+        return View(student);
+    }
+
 
     public IActionResult Privacy()
     {
@@ -36,4 +45,6 @@ public IActionResult RegisterWizard(HogwartsStudent student) // updated
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+
 }

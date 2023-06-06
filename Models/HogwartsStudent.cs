@@ -1,5 +1,5 @@
 #pragma warning disable CS8618
-namespace FirstMVC.Models;
+namespace Practice.Models;
 public class HogwartsStudent
 {
     public string Name {get;set;}
